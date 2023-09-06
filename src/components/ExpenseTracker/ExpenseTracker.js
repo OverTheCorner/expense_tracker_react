@@ -1,8 +1,8 @@
 import React from "react";
 
-function ExpenseTracker({ expenses }) {
-  const handleClickDelete = (event) => {
-    console.log(event.key);
+function ExpenseTracker({ expenses, deleteExpense }) {
+  const handleClickDelete = (id) => {
+    deleteExpense(id);
   };
   return (
     <div>
@@ -12,7 +12,9 @@ function ExpenseTracker({ expenses }) {
           <li key={expense.id}>
             <strong>{expense.name}:</strong> PHP {expense.amount.toFixed(2)}
             <button>edit</button>
-            <button onClick={handleClickDelete}>delete</button>
+            <button onClick={() => handleClickDelete(expense.id)}>
+              delete
+            </button>
           </li>
         ))}
       </ul>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuid } from "uuid";
 
 function ExpenseForm({ addExpense }) {
   const [category, setCategory] = useState(null);
@@ -14,6 +15,7 @@ function ExpenseForm({ addExpense }) {
     }
 
     const newExpense = {
+      id: uuid().slice(0, 8),
       name: expenseName,
       amount: parseFloat(expenseAmount),
     };
@@ -31,26 +33,26 @@ function ExpenseForm({ addExpense }) {
         <div>
           <label>Expense Name: </label>
           <input
-            type='text'
-            id='expenseName'
+            type="text"
+            id="expenseName"
             value={expenseName}
             onChange={(event) => setExpenseName(event.target.value)}
-            placeholder='Enter expense name'
+            placeholder="Enter expense name"
           />
         </div>
         <div>
           <label>Expense Amount:</label>
-          <label className='label-currency'>PHP</label>
+          <label className="label-currency">PHP</label>
           <input
-            type='number'
-            id='expenseAmount'
+            type="number"
+            id="expenseAmount"
             value={expenseAmount}
             onChange={(event) => setExpenseAmount(event.target.value)}
-            placeholder='Enter expense amount'
+            placeholder="Enter expense amount"
           />
         </div>
         <div>
-          <button type='submit'>Add Expense</button>
+          <button type="submit">Add Expense</button>
         </div>
       </form>
     </div>
